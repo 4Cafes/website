@@ -16,6 +16,11 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+        .header {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
         .container {
             text-align: left;
         }
@@ -50,6 +55,7 @@
     </style>
 </head>
 <body>
+    <div class="header">BETA - EXPECT FAILS</div>
     <div class="container">
         <div class="input-group">
             <input type="text" id="roundId" maxlength="36" placeholder="Enter Round ID">
@@ -95,10 +101,10 @@
         function getPositionsFromRoundId(roundId) {
             const positions = new Set();
             const randomSeed = roundId + Date.now().toString();
-            const random = new Math.seedrandom(randomSeed);
+            Math.seedrandom(randomSeed);
             
-            while (positions.size < 4) {
-                const pos = Math.floor(random() * 25);
+            while (positions.size < 3) {
+                const pos = Math.floor(Math.random() * 25);
                 positions.add(pos);
             }
             return Array.from(positions);
