@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafes.lol mines</title>
+    <title>Minefield Grid</title>
     <style>
         body {
             background-color: #000;
@@ -66,7 +66,8 @@
         </div>
     </div>
 
-    <script src="seedrandom.js"></script>
+    <script src="mines.js"></script>
+    <script src="ticketnumbergenerator.js"></script>
     <script>
         function generateGrid() {
             const grid = document.getElementById('grid');
@@ -96,18 +97,6 @@
             } else {
                 alert('Round ID must be 36 characters long.');
             }
-        }
-
-        function getPositionsFromRoundId(roundId) {
-            const positions = new Set();
-            const randomSeed = roundId + Date.now().toString();
-            Math.seedrandom(randomSeed);
-            
-            while (positions.size < 3) {
-                const pos = Math.floor(Math.random() * 25);
-                positions.add(pos);
-            }
-            return Array.from(positions);
         }
 
         // Initial grid setup
