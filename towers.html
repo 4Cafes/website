@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafes.lol tower</title>
+    <title>cafes.lol towers</title>
     <style>
         body {
             background-color: #000;
@@ -22,14 +22,7 @@
             margin-bottom: 20px;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .input-group {
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
         }
         .input-group input {
             width: 300px;
@@ -52,6 +45,7 @@
         }
         .grid-row button {
             width: 80px;
+            height: 80px;
             background-color: rgb(37, 38, 38);
             color: white;
             font-size: 24px;
@@ -63,10 +57,14 @@
 <body>
     <div class="container">
         <div class="header">BETA - EXPECT FAILS</div>
+    </div>
+    <div class="container">
         <div class="input-group">
             <input type="text" id="roundId" maxlength="36" placeholder="Enter Round ID">
             <button onclick="updateGrid()">Enter</button>
         </div>
+    </div>
+    <div class="container">
         <div class="grid" id="grid">
             <!-- Grid buttons will be inserted here -->
         </div>
