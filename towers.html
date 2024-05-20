@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafes.lol towers</title>
+    <title>cafes.lol tower</title>
     <style>
         body {
             background-color: #000;
@@ -22,10 +22,14 @@
             margin-bottom: 20px;
         }
         .container {
-            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .input-group {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
         .input-group input {
             width: 300px;
@@ -57,8 +61,8 @@
     </style>
 </head>
 <body>
-    <div class="header">BETA - EXPECT FAILS</div>
     <div class="container">
+        <div class="header">BETA - EXPECT FAILS</div>
         <div class="input-group">
             <input type="text" id="roundId" maxlength="36" placeholder="Enter Round ID">
             <button onclick="updateGrid()">Enter</button>
