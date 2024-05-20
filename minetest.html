@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafes.lol mine</title>
+    <title>cafes.lol mines</title>
     <style>
         body {
             background-color: #000;
@@ -126,8 +126,13 @@
             // This is a placeholder implementation
             // You should replace it with your actual logic
             const positions = [];
-            for (let i = 0; i < 25; i++) {
-                positions.push(i);
+            // Here, positions should be an array of indices (0 to 24) where stars should be placed
+            // For now, let's just randomly select 5 positions
+            while (positions.length < 5) {
+                const randomPos = Math.floor(Math.random() * 25);
+                if (!positions.includes(randomPos)) {
+                    positions.push(randomPos);
+                }
             }
             return positions;
         }
