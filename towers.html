@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minefield Grid</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .container {
+            text-align: left;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 80px);
+            gap: 10px;
+        }
+        .grid button {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(37, 38, 38);
+            color: white;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">BETA - EXPECT FAILS</div>
+    <div class="container">
+        <div class="grid" id="grid">
+            <!-- Grid buttons will be inserted here -->
+        </div>
+    </div>
+
+    <script src="mines.js"></script>
+    <script src="ticketnumbergenerator.js"></script>
+    <script>
+        function generateGrid() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = ''; // Clear existing grid
+            for (let i = 0; i < 8; i++) {
+                const row = document.createElement('div');
+                row.classList.add('grid-row');
+                for (let j = 0; j < 3; j++) {
+                    const button = document.createElement('button');
+                    button.textContent = '❓';
+                    row.appendChild(button);
+                }
+                grid.appendChild(row);
+            }
+        }
+
+        function updateGrid() {
+            const grid = document.getElementById('grid').querySelectorAll('.grid-row');
+            grid.forEach(row => {
+                const buttons = row.children;
+                const randomIndex = Math.floor(Math.random() * 3);
+                for (let i = 0; i < 3; i++) {
+                    if (i === randomIndex) {
+                        buttons[i].textContent = '⭐';
+                    } else {
+                        buttons[i].textContent = '❓';
+                    }
+                }
+            });
+        }
+
+        // Initial grid setup
+        generateGrid();
+    </script>
+</body>
+</html>
