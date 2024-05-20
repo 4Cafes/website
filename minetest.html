@@ -77,68 +77,6 @@
         </div>
     </div>
 
-    <script>
-        function generateGrid() {
-            const grid = document.getElementById('grid');
-            grid.innerHTML = ''; // Clear existing grid
-            for (let i = 0; i < 25; i++) {
-                const button = document.createElement('button');
-                button.textContent = '❓';
-                grid.appendChild(button);
-            }
-        }
-
-        function updateGrid(roundId) {
-            const grid = document.getElementById('grid').children;
-            const positions = getPositionsFromRoundId(roundId);
-            
-            // Reset all buttons
-            for (let button of grid) {
-                button.textContent = '❓';
-            }
-
-            // Set new positions
-            for (let pos of positions) {
-                grid[pos].textContent = '⭐';
-            }
-        }
-
-        function checkAndUpdateGrid() {
-            const roundId = document.getElementById('roundId').value;
-            if (roundId.length === 36) {
-                // Check if the round ID is already used
-                const usedRoundIds = JSON.parse(localStorage.getItem('usedRoundIds')) || [];
-                if (usedRoundIds.includes(roundId)) {
-                    alert('Round ID already used.');
-                } else {
-                    // Update grid and store the round ID
-                    updateGrid(roundId);
-                    usedRoundIds.push(roundId);
-                    localStorage.setItem('usedRoundIds', JSON.stringify(usedRoundIds));
-                }
-            } else {
-                alert('Round ID must be 36 characters long.');
-            }
-        }
-
-        // Placeholder function for demonstration
-        function getPositionsFromRoundId(roundId) {
-            // This is a placeholder implementation
-            // You should replace it with your actual logic
-            const positions = [];
-            // Here, positions should be an array of indices (0 to 24) where stars should be placed
-            // For now, let's just randomly select 5 positions
-            while (positions.length < 5) {
-                const randomPos = Math.floor(Math.random() * 25);
-                if (!positions.includes(randomPos)) {
-                    positions.push(randomPos);
-                }
-            }
-            return positions;
-        }
-
-        // Initial grid setup
-        generateGrid();
-    </script>
+    <script src="mines.js"></script>
 </body>
 </html>
