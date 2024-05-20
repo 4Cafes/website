@@ -40,12 +40,13 @@
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 80px);
             gap: 10px;
         }
-        .grid button {
+        .grid-row {
+            display: flex;
+        }
+        .grid-row button {
             width: 80px;
-            height: 80px;
             background-color: rgb(37, 38, 38);
             color: white;
             font-size: 24px;
@@ -57,6 +58,10 @@
 <body>
     <div class="header">BETA - EXPECT FAILS</div>
     <div class="container">
+        <div class="input-group">
+            <input type="text" id="roundId" maxlength="36" placeholder="Enter Round ID">
+            <button onclick="updateGrid()">Enter</button>
+        </div>
         <div class="grid" id="grid">
             <!-- Grid buttons will be inserted here -->
         </div>
@@ -68,31 +73,28 @@
         function generateGrid() {
             const grid = document.getElementById('grid');
             grid.innerHTML = ''; // Clear existing grid
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 9; i++) {
                 const row = document.createElement('div');
                 row.classList.add('grid-row');
-                for (let j = 0; j < 3; j++) {
-                    const button = document.createElement('button');
-                    button.textContent = '❓';
-                    row.appendChild(button);
-                }
+                const button = document.createElement('button');
+                button.textContent = '❓';
+                row.appendChild(button);
                 grid.appendChild(row);
             }
         }
 
         function updateGrid() {
-            const grid = document.getElementById('grid').querySelectorAll('.grid-row');
-            grid.forEach(row => {
-                const buttons = row.children;
-                const randomIndex = Math.floor(Math.random() * 3);
-                for (let i = 0; i < 3; i++) {
-                    if (i === randomIndex) {
-                        buttons[i].textContent = '⭐';
-                    } else {
-                        buttons[i].textContent = '❓';
-                    }
-                }
-            });
+            const roundId = document.getElementById('roundId').value;
+            if (roundId.length === 36) {
+                const grid = document.getElementById('grid').querySelectorAll('.grid-row');
+                grid.forEach(row => {
+                    const button = row.children[0];
+                    const isStar = Math.random() < 1/3;
+                    button.textContent = isStar ? '⭐' : '❓';
+                });
+            } else {
+                alert('Round ID must be 36 characters long.');
+            }
         }
 
         // Initial grid setup
