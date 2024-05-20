@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafes.lol towers</title>
+    <title>e</title>
     <style>
         body {
             background-color: #000;
@@ -16,24 +16,8 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        .header {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
         .container {
             margin-bottom: 20px;
-        }
-        .input-group input {
-            width: 300px;
-            padding: 10px;
-            margin-right: 10px;
-            font-size: 16px;
-        }
-        .input-group button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
         }
         .grid {
             display: grid;
@@ -55,15 +39,6 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">BETA - EXPECT FAILS</div>
-    </div>
-    <div class="container">
-        <div class="input-group">
-            <input type="text" id="roundId" maxlength="36" placeholder="Enter Round ID">
-            <button onclick="updateGrid()">Enter</button>
-        </div>
-    </div>
     <div class="container">
         <div class="grid" id="grid">
             <!-- Grid buttons will be inserted here -->
@@ -89,23 +64,18 @@
         }
 
         function updateGrid() {
-            const roundId = document.getElementById('roundId').value;
-            if (roundId.length === 36) {
-                const grid = document.getElementById('grid').querySelectorAll('.grid-row');
-                grid.forEach(row => {
-                    const buttons = row.children;
-                    const randomIndex = Math.floor(Math.random() * 3);
-                    for (let i = 0; i < 3; i++) {
-                        if (i === randomIndex) {
-                            buttons[i].textContent = '⭐';
-                        } else {
-                            buttons[i].textContent = '❓';
-                        }
+            const grid = document.getElementById('grid').querySelectorAll('.grid-row');
+            grid.forEach(row => {
+                const buttons = row.children;
+                const randomIndex = Math.floor(Math.random() * 3);
+                for (let i = 0; i < 3; i++) {
+                    if (i === randomIndex) {
+                        buttons[i].textContent = '⭐';
+                    } else {
+                        buttons[i].textContent = '❓';
                     }
-                });
-            } else {
-                alert('Round ID must be 36 characters long.');
-            }
+                }
+            });
         }
 
         // Initial grid setup
