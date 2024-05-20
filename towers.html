@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minefield Grid</title>
+    <title>cafes.lol towers</title>
     <style>
         body {
             background-color: #000;
@@ -40,6 +40,7 @@
         }
         .grid {
             display: grid;
+            grid-template-columns: repeat(3, 80px);
             gap: 10px;
         }
         .grid-row {
@@ -73,12 +74,14 @@
         function generateGrid() {
             const grid = document.getElementById('grid');
             grid.innerHTML = ''; // Clear existing grid
-            for (let i = 0; i < 9; i++) {
+            for (let i = 0; i < 8; i++) {
                 const row = document.createElement('div');
                 row.classList.add('grid-row');
-                const button = document.createElement('button');
-                button.textContent = '❓';
-                row.appendChild(button);
+                for (let j = 0; j < 3; j++) {
+                    const button = document.createElement('button');
+                    button.textContent = '❓';
+                    row.appendChild(button);
+                }
                 grid.appendChild(row);
             }
         }
@@ -88,9 +91,15 @@
             if (roundId.length === 36) {
                 const grid = document.getElementById('grid').querySelectorAll('.grid-row');
                 grid.forEach(row => {
-                    const button = row.children[0];
-                    const isStar = Math.random() < 1/3;
-                    button.textContent = isStar ? '⭐' : '❓';
+                    const buttons = row.children;
+                    const randomIndex = Math.floor(Math.random() * 3);
+                    for (let i = 0; i < 3; i++) {
+                        if (i === randomIndex) {
+                            buttons[i].textContent = '⭐';
+                        } else {
+                            buttons[i].textContent = '❓';
+                        }
+                    }
                 });
             } else {
                 alert('Round ID must be 36 characters long.');
